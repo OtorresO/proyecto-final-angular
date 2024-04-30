@@ -1,1 +1,17 @@
-/* You can add global styles to this file, and also import other style files */
+.cursor-pointer {
+    cursor: pointer;
+}
+
+.text-lead {
+    color: #717579;
+}
+
+.link-sidebar {
+    text-decoration: none;
+    color: #717579;
+}
+
+.link-sidebar:hover {
+    --bs-text-opacity: 1;
+    color: rgba(var(--bs-success-rgb), var(--bs-text-opacity)) !important;
+}
