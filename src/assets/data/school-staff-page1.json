@@ -1,0 +1,47 @@
+{
+  "totalItems": 16,
+  "data": [
+    {
+      "id": 1352,
+      "docente": "Alexander Agapito",
+      "evaluacion": 0
+    },
+    {
+      "id": 1342,
+      "docente": "Dalila Maribel Alburquerque Collatupa",
+      "evaluacion": 0
+    },
+    {
+      "id": 2651,
+      "docente": "Stefania Altamirano Curillo",
+      "evaluacion": 0
+    },
+    {
+      "id": 1846,
+      "docente": "Roberto Cesar Alvarez Peña",
+      "evaluacion": 0
+    },
+    {
+      "id": 1333,
+      "docente": "Daniel Marco Ames Vera",
+      "evaluacion": 0
+    },
+    {
+      "id": 1366,
+      "docente": "Maria Lorena Atoche Ruiz",
+      "evaluacion": 0
+    },
+    {
+      "id": 1345,
+      "docente": "Wanda Ines Barreto Olivos",
+      "evaluacion": 0
+    },
+    {
+      "id": 4387,
+      "docente": "Nora Lucía Beraum",
+      "evaluacion": 0
+    }
+  ],
+  "totalPages": 2,
+  "currentPage": 2
+}

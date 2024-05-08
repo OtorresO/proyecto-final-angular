@@ -1,0 +1,47 @@
+{
+  "totalItems": 16,
+  "data": [
+    {
+      "id": 1709,
+      "docente": "Smith Johnson John",
+      "evaluacion": 0
+    },
+    {
+      "id": 4417,
+      "docente": "Brown Williams James",
+      "evaluacion": 0
+    },
+    {
+      "id": 1840,
+      "docente": "Miller Jones David",
+      "evaluacion": 0
+    },
+    {
+      "id": 2049,
+      "docente": "Taylor Davis Robert",
+      "evaluacion": 0
+    },
+    {
+      "id": 1715,
+      "docente": "Wilson Martinez Michael",
+      "evaluacion": 0
+    },
+    {
+      "id": 4505,
+      "docente": "Anderson Hernandez William",
+      "evaluacion": 0
+    },
+    {
+      "id": 1684,
+      "docente": "Thomas Lopez Richard",
+      "evaluacion": 0
+    },
+    {
+      "id": 1713,
+      "docente": "Jackson Gonzalez Charles",
+      "evaluacion": 0
+    }
+  ],
+  "totalPages": 2,
+  "currentPage": 1
+}

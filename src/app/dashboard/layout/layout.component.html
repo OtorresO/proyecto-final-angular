@@ -2,7 +2,7 @@
     <aside class="border-1 border-end sidebar" [class.hide-sidebar]="isCollapsed">
         <div class="avatar d-flex align-items-center  justify-content-center flex-column m-3 ">
             <img src="../../../assets/img/avatar.png" alt="User avatar" class="w-50  h-50 ">
-            <h5 class="text-username">{{userProfile.name}}r</h5>
+            <h5 class="text-username">{{userProfile.name}}</h5>
             <span class="text-rol">Admin</span>
         </div>
         <div class="border-bottom mx-2"></div>
@@ -18,7 +18,7 @@
         <div class="m-3 d-flex flex-column gap-3">
             <span>Assessment</span>
             <div class="d-flex justify-content-center gap-3 flex-column ">
-                <app-link-aside path="/dashboard/evaluate-monitoring" text="Evaluate Monitoring"/>
+                <app-link-aside path="/dashboard/assessment" text="Evaluate Monitoring"/>
                 <app-link-aside path="/dashboard/evaluate-certification" text="Evaluate Certification"/>
             </div>
         </div>

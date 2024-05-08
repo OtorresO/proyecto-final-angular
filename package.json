@@ -21,6 +21,8 @@
     "@fontsource/be-vietnam-pro": "^5.0.20",
     "bootstrap": "^5.3.3",
     "bootswatch": "^5.3.3",
+    "highcharts": "^11.4.1",
+    "highcharts-angular": "^4.0.0",
     "jquery": "^3.7.1",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0",

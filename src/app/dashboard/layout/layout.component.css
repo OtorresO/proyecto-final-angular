@@ -9,7 +9,7 @@
 }
 
 .sidebar{
-    width: 280px;
+    width: 240px;
     height: 100vh;
     max-height: 100vh;
     position: fixed;
@@ -18,14 +18,14 @@
     transition: left 0.3s ease;
 }
 .hide-sidebar{
-    left: -280px;
+    left: -240px;
 }
 .container-main{
     display: grid;
     grid-template-rows: 70px 1fr;
     height: 100vh;
     max-height: 100vh;
-    margin-left: calc(280px + 1rem);
+    margin-left: calc(240px + 1rem);
     margin-right: 1rem;
     transition: margin-left 0.5s ease;
 }

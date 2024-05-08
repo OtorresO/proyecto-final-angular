@@ -1,0 +1,19 @@
+.my-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+}
+
+.grid-table{
+    grid-column: span 2;
+}
+
+.grid-display-teacher{
+    grid-column: span 1;
+}
+
+.disabled-events{
+    pointer-events: none;
+    opacity: 0.7;
+}
+

@@ -1,0 +1,77 @@
+<div class="my-5 mx-3 flex flex-column gap-3 ">
+    <h4 class="fw-bold ">Evaluar</h4>
+    <div class="d-grid  p-5 gap-3  border  rounded ">
+        <div class="row">
+            <div class="col-3 ">
+                <input type="date" class="form-control" [ngModel]="currentDate | date:'yyyy-MM-dd'"
+                    (ngModelChange)="onDateChange($event)">
+            </div>
+            <div class="offset-5 col-4">
+                <select class="form-control form-select custom-select" *ngIf="schools" [ngModel]="currentSchool" (ngModelChange)="onSelectChange($event)">
+                    <option  class="text-truncate " [value]="school.id" *ngFor="let school of schools">
+                        {{school.nombre}}</option>
+                </select>
+
+            </div>
+        </div>
+
+
+        <div class="my-grid">
+            <div class="border rounded p-3 h-100 grid-table">
+                <table class="table table-hover " *ngIf="schoolsStaff">
+                    <thead>
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Profesores</th>
+                            <th scope="col">Estado</th>
+                        </tr>
+                    </thead>
+
+                    <tbody>
+                        <tr (click)="displayTeacher(teacher)" *ngFor="let teacher of schoolsStaff.data;index as i"
+                            class="cursor-pointer" [class.table-light]="customTeacherToEvaluate?.id===teacher.id">
+                            <td><b>{{i+startIndex+1}}</b></td>
+                            <td>{{teacher.docente}}</td>
+                            <td><span class="badge bg-info ">Sin evaluar</span></td>
+                        </tr>
+                    </tbody>
+
+
+                </table>
+
+                <div class="btn-toolbar float-end " role="toolbar" aria-label="Toolbar with button groups">
+                    <div class="btn-group" role="group" aria-label="First group">
+                        <button type="button" class="btn btn-outline-success " [class.disabled]="currentPage==0"
+                            (click)="nextPage(currentPage)"><span aria-hidden="true"
+                                class="fw-bolder ">&laquo;</span></button>
+                        <button type="button" class="btn btn-outline-success " [class.active]="currentPage==0"
+                            (click)="changeCurrentPage(0)">1</button>
+                        <button type="button" class="btn btn-outline-success " [class.active]="currentPage==1"
+                            (click)="changeCurrentPage(1)">2</button>
+                        <button type="button" class="btn btn-outline-success " [class.disabled]="currentPage==1"
+                            (click)="nextPage(currentPage)"><span aria-hidden="true"
+                                class="fw-bolder ">&raquo;</span></button>
+                    </div>
+
+                </div>
+            </div>
+            <div class="d-flex flex-column  justify-content-center align-items-center  border rounded p-3 h-100">
+                <ng-container *ngIf="customTeacherToEvaluate; else templateA" class="grid-display-teacher">
+                    <img src="../../../assets/img/avatar.png" alt="User avatar" class="w-50  h-auto ">
+                    <h5 class="text-username">{{customTeacherToEvaluate.docente}}r</h5>
+                    <a class="btn btn-dark" routerLink="/dashboard/assessment/evaluate-monitoring/{{currentDate | date:'yyyy-MM-dd'}}/{{currentSchool}}/{{customTeacherToEvaluate.id}}/{{currentPage}}">Evaluar</a>
+                </ng-container>
+
+                <ng-template #templateA>
+
+                    <h4 class="text-center">
+                        YOU MUST SELECT A TEACHER
+                    </h4>
+                    <p class="text-muted text-center ">
+                        Click on one of the rows
+                    </p>
+
+                </ng-template>
+            </div>
+
+        </div>

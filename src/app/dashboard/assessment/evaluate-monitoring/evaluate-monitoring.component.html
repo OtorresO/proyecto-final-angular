@@ -1,0 +1,227 @@
+<div class="my-4 mx-3 d-flex flex-column gap-3 ">
+    <div class="d-flex flex-row   justify-content-between ">
+        <div class="h4 fw-bold ">
+            {{school?.nombre}}
+        </div>
+        <div class="h4 fw-medium ">
+            {{date}}
+        </div>
+    </div>
+
+    <div class="bg-light px-3 py-2 rounded  ">
+        <a routerLink="/dashboard/assessment">Assessment</a>
+    </div>
+
+    <div class="p-4  border rounded ">
+        <div class="d-flex align-items-center justify-content-between ">
+            <div class="d-flex flex-column gap-2">
+                <div class="text-light-emphasis "><b>Evaluator:</b>{{userProfile?.name}}</div>
+                <div class="text-light-emphasis  "><b>Evaluated:</b>{{teacher?.docente}}</div>
+
+            </div>
+            <div class="h4 fw-bold ">
+                28%
+            </div>
+
+        </div>
+
+        <div class="mt-2 ">
+            <table class="table table-light ">
+                <thead>
+                    <th>Factor</th>
+                    <th>Indicator</th>
+                    <th>State</th>
+                    <th>Rubric</th>
+                    <th>Findings and Recommendations</th>
+                </thead>
+                <tbody class="font-body-table">
+                    <!-- Factor Organizacional -->
+                    <tr *ngFor="let indicator of factorOrganizacional?.indicadores;index as i">
+                        <ng-container *ngIf="(i==0); else templateA">
+                            <td [attr.rowspan]="factorOrganizacional?.indicadores?.length">
+                                {{factorOrganizacional?.factor}}
+                            </td>
+                        </ng-container>
+
+                        <td [width]="250">{{indicator.indicador}}</td>
+                        <td>
+                            <ng-container *ngIf="indicadoresOrganizational">
+                                <select [ngModel]="indicadoresOrganizational[i].idValoracionSeleccionada"
+                                    (ngModelChange)="changeValoracion($event,indicator.idIndicador,factorOrganizacional?.idFactor!)"
+                                    class="width-select">
+                                    <option [value]="valor.idValoracion" *ngFor="let valor of indicator.valoraciones">
+                                        {{valor.valoracion}}
+                                    </option>
+                                </select>
+
+                            </ng-container>
+                        </td>
+                        <td [width]="250">
+                            <ng-container *ngIf="indicadoresOrganizational">
+                                <ng-container *ngIf="indicadoresOrganizational[i].idValoracionSeleccionada">
+                                    {{indicadoresOrganizational[i].valoracionDescription }}
+                                </ng-container>
+                            </ng-container>
+
+                        </td>
+                        <ng-container *ngIf="(i==0); else templateA">
+                            <td [attr.rowspan]="factorOrganizacional?.indicadores?.length">
+                                <textarea class="size-text-area"
+                                    (input)="updateRecomendationToEvaluation(factorOrganizacional?.idFactor!,$event)"></textarea>
+                            </td>
+                        </ng-container>
+
+
+                    </tr>
+
+
+                    <!-- Factor Social -->
+                    <tr *ngFor="let indicator of factorSocial?.indicadores;index as i">
+                        <ng-container *ngIf="(i==0); else templateA">
+                            <td [attr.rowspan]="factorSocial?.indicadores?.length">
+                                {{factorSocial?.factor}}
+                            </td>
+                        </ng-container>
+
+                        <td [width]="250">{{indicator.indicador}}</td>
+                        <td>
+                            <ng-container *ngIf="indicadoresSocial">
+                                <select [ngModel]="indicadoresSocial[i].idValoracionSeleccionada"
+                                    (ngModelChange)="changeValoracion($event,indicator.idIndicador,factorSocial?.idFactor!)"
+                                    class="width-select">
+                                    <option [value]="valor.idValoracion" *ngFor="let valor of indicator.valoraciones">
+                                        {{valor.valoracion}}
+                                    </option>
+                                </select>
+
+                            </ng-container>
+
+                        </td>
+                        <td [width]="250">
+                            <ng-container *ngIf="indicadoresSocial">
+                                <ng-container *ngIf="indicadoresSocial[i].idValoracionSeleccionada">
+                                    {{indicadoresSocial[i].valoracionDescription }}
+                                </ng-container>
+                            </ng-container>
+
+                        </td>
+                        <ng-container *ngIf="(i==0); else templateA">
+                            <td [attr.rowspan]="factorSocial?.indicadores?.length">
+                                <textarea class="size-text-area"
+                                    (input)="updateRecomendationToEvaluation(factorSocial?.idFactor!,$event)"></textarea>
+
+                            </td>
+                        </ng-container>
+
+
+                    </tr>
+
+                    <!-- Factor Pedagogical -->
+                    <tr *ngFor="let indicator of factorPedagogical?.indicadores;index as i">
+                        <ng-container *ngIf="(i==0); else templateA">
+                            <td [attr.rowspan]="factorPedagogical?.indicadores?.length">
+                                {{factorPedagogical?.factor}}
+                            </td>
+                        </ng-container>
+
+                        <td [width]="250">{{indicator.indicador}}</td>
+                        <td>
+                            <ng-container *ngIf="indicadoresPedagogical">
+                                <select [ngModel]="indicadoresPedagogical[i].idValoracionSeleccionada"
+                                    (ngModelChange)="changeValoracion($event,indicator.idIndicador,factorPedagogical?.idFactor!)"
+                                    class="width-select">
+                                    <option [value]="valor.idValoracion" *ngFor="let valor of indicator.valoraciones">
+                                        {{valor.valoracion}}
+                                    </option>
+                                </select>
+                            </ng-container>
+
+                        </td>
+                        <td [width]="250">
+                            <ng-container *ngIf="indicadoresPedagogical">
+                                <ng-container *ngIf="indicadoresPedagogical[i].idValoracionSeleccionada">
+                                    {{indicadoresPedagogical[i].valoracionDescription }}
+                                </ng-container>
+                            </ng-container>
+                        </td>
+                        <ng-container *ngIf="(i==0); else templateA">
+                            <td [attr.rowspan]="factorPedagogical?.indicadores?.length">
+                                <textarea class="size-text-area2"
+                                    (input)="updateRecomendationToEvaluation(factorPedagogical?.idFactor!,$event)"></textarea>
+
+                            </td>
+                        </ng-container>
+
+
+                    </tr>
+
+                    <!-- Factor Technological -->
+                    <tr *ngFor="let indicator of factorTechnological?.indicadores;index as i">
+                        <ng-container *ngIf="(i==0); else templateA">
+                            <td [attr.rowspan]="factorTechnological?.indicadores?.length">
+                                {{factorTechnological?.factor}}
+                            </td>
+                        </ng-container>
+
+                        <td [width]="250">{{indicator.indicador}}</td>
+                        <td>
+                            <ng-container *ngIf="indicadoresTechnological">
+                                <select [ngModel]="indicadoresTechnological[i].idValoracionSeleccionada"
+                                    (ngModelChange)="changeValoracion($event,indicator.idIndicador,factorTechnological?.idFactor!)"
+                                    class="width-select">
+                                    <option [value]="valor.idValoracion" *ngFor="let valor of indicator.valoraciones">
+                                        {{valor.valoracion}}
+                                    </option>
+                                </select>
+
+                            </ng-container>
+
+                        </td>
+                        <td [width]="250">
+                            <ng-container *ngIf="indicadoresTechnological">
+                                <ng-container *ngIf="indicadoresTechnological[i].idValoracionSeleccionada">
+                                    {{indicadoresTechnological[i].valoracionDescription }}
+                                </ng-container>
+                            </ng-container>
+                        </td>
+                        <ng-container *ngIf="(i==0); else templateA">
+                            <td [attr.rowspan]="factorTechnological?.indicadores?.length">
+                                <textarea class="size-text-area3"
+                                    (input)="updateRecomendationToEvaluation(factorTechnological?.idFactor!,$event)"></textarea>
+                            </td>
+                        </ng-container>
+
+
+                    </tr>
+
+
+
+
+
+
+
+                </tbody>
+            </table>
+        </div>
+
+        <div class="mt-2">
+            <ng-container *ngIf="labelsFactors&&dataFactors">
+                <app-chart [labels]="labelsFactors" [data]="dataFactors"></app-chart>
+            </ng-container>
+        </div>
+
+        <div class="mt-2 float-end ">
+            <button class="btn btn-primary" (click)="guardarEvaluation()">Guardar</button>
+        </div>
+
+
+    </div>
+
+
+
+
+
+
+</div>
+
+<ng-template #templateA></ng-template>
