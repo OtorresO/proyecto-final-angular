@@ -48,7 +48,7 @@
                             <ng-container *ngIf="indicadoresOrganizational">
                                 <select [ngModel]="indicadoresOrganizational[i].idValoracionSeleccionada"
                                     (ngModelChange)="changeValoracion($event,indicator.idIndicador,factorOrganizacional?.idFactor!)"
-                                    class="width-select">
+                                    class="width-select form-control form-select ">
                                     <option [value]="valor.idValoracion" *ngFor="let valor of indicator.valoraciones">
                                         {{valor.valoracion}}
                                     </option>
@@ -67,7 +67,8 @@
                         <ng-container *ngIf="(i==0); else templateA">
                             <td [attr.rowspan]="factorOrganizacional?.indicadores?.length">
 
-                                <textarea class="size-text-area"
+                                <textarea class="size-text-area form-control "
+                                
                                     (input)="updateRecomendationToEvaluation(factorOrganizacional?.idFactor!,$event)"
                                     [value]="factorOrganizacional?.recomendacion">
 
@@ -96,7 +97,7 @@
                             <ng-container *ngIf="indicadoresSocial">
                                 <select [ngModel]="indicadoresSocial[i].idValoracionSeleccionada"
                                     (ngModelChange)="changeValoracion($event,indicator.idIndicador,factorSocial?.idFactor!)"
-                                    class="width-select">
+                                    class="width-select form-control form-select">
                                     <option [value]="valor.idValoracion" *ngFor="let valor of indicator.valoraciones">
                                         {{valor.valoracion}}
                                     </option>
@@ -115,7 +116,7 @@
                         </td>
                         <ng-container *ngIf="(i==0); else templateA">
                             <td [attr.rowspan]="factorSocial?.indicadores?.length">
-                                <textarea class="size-text-area" [value]="factorSocial?.recomendacion"
+                                <textarea class="size-text-area form-control " [value]="factorSocial?.recomendacion"
                                     (input)="updateRecomendationToEvaluation(factorSocial?.idFactor!,$event)"></textarea>
 
                             </td>
@@ -137,7 +138,7 @@
                             <ng-container *ngIf="indicadoresPedagogical">
                                 <select [ngModel]="indicadoresPedagogical[i].idValoracionSeleccionada"
                                     (ngModelChange)="changeValoracion($event,indicator.idIndicador,factorPedagogical?.idFactor!)"
-                                    class="width-select">
+                                    class="width-select form-control form-select">
                                     <option [value]="valor.idValoracion" *ngFor="let valor of indicator.valoraciones">
                                         {{valor.valoracion}}
                                     </option>
@@ -154,7 +155,7 @@
                         </td>
                         <ng-container *ngIf="(i==0); else templateA">
                             <td [attr.rowspan]="factorPedagogical?.indicadores?.length">
-                                <textarea class="size-text-area2" [value]="factorPedagogical?.recomendacion"
+                                <textarea class="size-text-area2 form-control " [value]="factorPedagogical?.recomendacion"
                                     (input)="updateRecomendationToEvaluation(factorPedagogical?.idFactor!,$event)"></textarea>
 
                             </td>
@@ -176,7 +177,7 @@
                             <ng-container *ngIf="indicadoresTechnological">
                                 <select [ngModel]="indicadoresTechnological[i].idValoracionSeleccionada"
                                     (ngModelChange)="changeValoracion($event,indicator.idIndicador,factorTechnological?.idFactor!)"
-                                    class="width-select">
+                                    class="width-select form-control form-select">
                                     <option [value]="valor.idValoracion" *ngFor="let valor of indicator.valoraciones">
                                         {{valor.valoracion}}
                                     </option>
@@ -194,7 +195,7 @@
                         </td>
                         <ng-container *ngIf="(i==0); else templateA">
                             <td [attr.rowspan]="factorTechnological?.indicadores?.length">
-                                <textarea class="size-text-area3" [value]="factorTechnological?.recomendacion"
+                                <textarea class="size-text-area3 form-control " [value]="factorTechnological?.recomendacion"
                                     (input)="updateRecomendationToEvaluation(factorTechnological?.idFactor!,$event)"></textarea>
                             </td>
                         </ng-container>
@@ -231,5 +232,4 @@
 
 
 </div>
-
 <ng-template #templateA></ng-template>

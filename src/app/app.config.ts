@@ -2,11 +2,12 @@ import { ApplicationConfig } from '@angular/core';
 import { provideRouter } from '@angular/router';
 
 import { routes } from './app.routes';
-import { HttpClientModule, provideHttpClient, withFetch } from '@angular/common/http';
-import { EvaluationsService } from './dashboard/assessment/services/evaluations.service';
+import { provideHttpClient } from '@angular/common/http';
+import { provideToastr } from 'ngx-toastr';
+import { provideAnimations } from '@angular/platform-browser/animations';
 
 export const appConfig: ApplicationConfig = {
-  providers: [provideRouter(routes),provideHttpClient(),EvaluationsService],
+  providers: [provideRouter(routes),provideHttpClient(),provideAnimations(),provideToastr()],
   
   
   

@@ -13,11 +13,13 @@ import { UserProfileService } from '../../services/user-profile.service';
 import { UserProfile } from '../../models/user.model';
 import { EvaluationsService } from '../services/evaluations.service';
 import { StorageService } from '../services/storage.service';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-evaluate-monitoring',
   standalone: true,
   imports: [CommonModule, RouterLink, FormsModule, ChartComponent],
+ 
   templateUrl: './evaluate-monitoring.component.html',
   styleUrl: './evaluate-monitoring.component.css'
 })
@@ -49,9 +51,9 @@ export class EvaluateMonitoringComponent implements OnInit {
   public indicadoresSocial: IndicadorEvaluation[] | null = null;
   public indicadoresPedagogical: IndicadorEvaluation[] | null = null;
   public indicadoresTechnological: IndicadorEvaluation[] | null = null;
+  public showToast:boolean=false
 
-
-  constructor(private route: ActivatedRoute) { }
+  constructor(private route: ActivatedRoute,private toastr: ToastrService) { }
   ngOnInit() {
     this.userService.userData$.subscribe(userData => {
       this.userProfile = userData;
@@ -410,7 +412,8 @@ export class EvaluateMonitoringComponent implements OnInit {
       this.evaluationsService.actualizarCountEvaluations(evaluaciones.length)
     }
     this.storageService.setItem('evaluations', evaluaciones)
-    alert('¡La evaluación ha sido añadida exitosamente!')
+    this.toastr.success('!La evaluación ha sido añadida exitosamente!');
+    //alert('¡La evaluación ha sido añadida exitosamente!')
   }
 
 
