@@ -3,8 +3,8 @@
     <div class="d-grid  p-5 gap-3  border  rounded ">
         <div class="row">
             <div class="col-3 ">
-                <input type="date" class="form-control" [ngModel]="currentDate | date:'yyyy-MM-dd'"
-                    (ngModelChange)="onDateChange($event)">
+                <input type="date" class="form-control" [ngModel]="currentDate"
+                 (ngModelChange)="onDateChange($event)">
             </div>
             <div class="offset-5 col-4">
                 <select class="form-control form-select custom-select" *ngIf="schools" [ngModel]="currentSchool" (ngModelChange)="onSelectChange($event)">
@@ -32,7 +32,12 @@
                             class="cursor-pointer" [class.table-light]="customTeacherToEvaluate?.id===teacher.id">
                             <td><b>{{i+startIndex+1}}</b></td>
                             <td>{{teacher.docente}}</td>
-                            <td><span class="badge bg-info ">Sin evaluar</span></td>
+                            <td>
+                                <ng-container *ngIf="teacher.evaluacion==1;else NoEvaluado">
+                                    <span class="badge bg-info">Evaluado</span>
+                                </ng-container>
+                            
+                            </td>
                         </tr>
                     </tbody>
 
@@ -59,7 +64,13 @@
                 <ng-container *ngIf="customTeacherToEvaluate; else templateA" class="grid-display-teacher">
                     <img src="../../../assets/img/avatar.png" alt="User avatar" class="w-50  h-auto ">
                     <h5 class="text-username">{{customTeacherToEvaluate.docente}}r</h5>
-                    <a class="btn btn-dark" routerLink="/dashboard/assessment/evaluate-monitoring/{{currentDate | date:'yyyy-MM-dd'}}/{{currentSchool}}/{{customTeacherToEvaluate.id}}/{{currentPage}}">Evaluar</a>
+                    <a class="btn btn-dark" routerLink="/dashboard/assessment/evaluate-monitoring/{{currentDate}}/{{currentSchool}}/{{customTeacherToEvaluate.id}}/{{currentPage}}">
+                        <ng-container *ngIf="customTeacherToEvaluate.evaluacion==1;else textBtnEvaluar">
+                            Editar
+                        </ng-container>
+                        
+                    
+                    </a>
                 </ng-container>
 
                 <ng-template #templateA>
@@ -71,6 +82,14 @@
                         Click on one of the rows
                     </p>
 
+                </ng-template>
+
+                <ng-template #NoEvaluado>
+                    <span class="badge bg-danger">No evaluado</span>
+                </ng-template>
+
+                <ng-template #textBtnEvaluar>
+                    Evaluar
                 </ng-template>
             </div>
 

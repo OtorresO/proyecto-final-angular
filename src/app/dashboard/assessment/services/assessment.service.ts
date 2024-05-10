@@ -30,16 +30,5 @@ export class AssessmentService {
     return this.http.get<Rubric[]>('./assets/data/rubrics.json');
   }
 
-  getEvaluations(key: string) {
-    const dataStorage = localStorage.getItem(key);
-    if (dataStorage) {
-      return JSON.parse(dataStorage)
-    } else {
-      return null;
-    }
-  }
-
-  setEvaluations(key: string, data: any) {
-    localStorage.setItem(key, JSON.stringify(data));
-  }
+  
 }

@@ -20,7 +20,7 @@
 
             </div>
             <div class="h4 fw-bold ">
-                28%
+                {{porcentajeTotal}} %
             </div>
 
         </div>
@@ -66,8 +66,16 @@
                         </td>
                         <ng-container *ngIf="(i==0); else templateA">
                             <td [attr.rowspan]="factorOrganizacional?.indicadores?.length">
+
                                 <textarea class="size-text-area"
-                                    (input)="updateRecomendationToEvaluation(factorOrganizacional?.idFactor!,$event)"></textarea>
+                                    (input)="updateRecomendationToEvaluation(factorOrganizacional?.idFactor!,$event)"
+                                    [value]="factorOrganizacional?.recomendacion">
+
+                                </textarea>
+
+
+
+
                             </td>
                         </ng-container>
 
@@ -107,7 +115,7 @@
                         </td>
                         <ng-container *ngIf="(i==0); else templateA">
                             <td [attr.rowspan]="factorSocial?.indicadores?.length">
-                                <textarea class="size-text-area"
+                                <textarea class="size-text-area" [value]="factorSocial?.recomendacion"
                                     (input)="updateRecomendationToEvaluation(factorSocial?.idFactor!,$event)"></textarea>
 
                             </td>
@@ -146,7 +154,7 @@
                         </td>
                         <ng-container *ngIf="(i==0); else templateA">
                             <td [attr.rowspan]="factorPedagogical?.indicadores?.length">
-                                <textarea class="size-text-area2"
+                                <textarea class="size-text-area2" [value]="factorPedagogical?.recomendacion"
                                     (input)="updateRecomendationToEvaluation(factorPedagogical?.idFactor!,$event)"></textarea>
 
                             </td>
@@ -186,7 +194,7 @@
                         </td>
                         <ng-container *ngIf="(i==0); else templateA">
                             <td [attr.rowspan]="factorTechnological?.indicadores?.length">
-                                <textarea class="size-text-area3"
+                                <textarea class="size-text-area3" [value]="factorTechnological?.recomendacion"
                                     (input)="updateRecomendationToEvaluation(factorTechnological?.idFactor!,$event)"></textarea>
                             </td>
                         </ng-container>
