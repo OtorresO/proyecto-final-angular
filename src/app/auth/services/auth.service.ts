@@ -1,3 +1,4 @@
+import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 @Injectable({
@@ -5,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class AuthService {
 
-  constructor() { }
+  constructor(private http:HttpClient) { }
 
   get(key: string) {
     const dataStorage = localStorage.getItem(key);
@@ -22,10 +23,10 @@ export class AuthService {
   
   destroySession(key:string){
     if(this.get(key)){
-      console.log('pasa por aqui')
       localStorage.removeItem(key)
     }
   }
+  
 
 
 

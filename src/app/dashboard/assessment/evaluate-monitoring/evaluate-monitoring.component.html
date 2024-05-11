@@ -66,9 +66,7 @@
                         </td>
                         <ng-container *ngIf="(i==0); else templateA">
                             <td [attr.rowspan]="factorOrganizacional?.indicadores?.length">
-
                                 <textarea class="size-text-area form-control "
-                                
                                     (input)="updateRecomendationToEvaluation(factorOrganizacional?.idFactor!,$event)"
                                     [value]="factorOrganizacional?.recomendacion">
 

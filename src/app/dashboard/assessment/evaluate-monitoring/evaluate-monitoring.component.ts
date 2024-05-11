@@ -413,7 +413,6 @@ export class EvaluateMonitoringComponent implements OnInit {
     }
     this.storageService.setItem('evaluations', evaluaciones)
     this.toastr.success('!La evaluación ha sido añadida exitosamente!');
-    //alert('¡La evaluación ha sido añadida exitosamente!')
   }
 
 
