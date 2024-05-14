@@ -17,6 +17,7 @@ export class AssessmentService {
   }
   getSchoolStaff(page: number) {
     this.loadingSubject.next(true);
+    
     return this.http.get<SchoolStaff>(`./assets/data/school-staff-page${page}.json`).pipe(
 
       finalize(() => this.loadingSubject.next(false))

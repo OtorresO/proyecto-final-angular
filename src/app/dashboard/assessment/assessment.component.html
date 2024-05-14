@@ -3,73 +3,79 @@
     <div class="d-grid  p-5 gap-3  border  rounded ">
         <div class="row">
             <div class="col-3 ">
-                <input type="date" class="form-control" [ngModel]="currentDate"
-                 (ngModelChange)="onDateChange($event)">
+                <input type="date" class="form-control" [ngModel]="currentDate" (ngModelChange)="onDateChange($event)">
             </div>
             <div class="offset-5 col-4">
-                <select class="form-control form-select custom-select" *ngIf="schools" [ngModel]="currentSchool" (ngModelChange)="onSelectChange($event)">
-                    <option  class="text-truncate " [value]="school.id" *ngFor="let school of schools">
+                <select class="form-control" *ngIf="schools" [(ngModel)]="currentSchool"
+                    (ngModelChange)="onSelectChange($event)">
+                    <option class="text-truncate " [ngValue]="school.id" *ngFor="let school of schools">
                         {{school.nombre}}</option>
                 </select>
 
             </div>
         </div>
-
+        <ng-template #loadingTemplate>
+            <app-skeleton-table ></app-skeleton-table>
+        </ng-template>
 
         <div class="my-grid">
-            <div class="border rounded p-3 h-100 grid-table">
-                <table class="table table-hover " *ngIf="schoolsStaff">
-                    <thead>
-                        <tr>
-                            <th scope="col">#</th>
-                            <th scope="col">Profesores</th>
-                            <th scope="col">Estado</th>
-                        </tr>
-                    </thead>
+            <ng-container >
+                <div class="border rounded p-3 h-100 grid-table">
+                    <table class="table table-hover " *ngIf="!loading;else loadingTemplate">
+                        <thead>
+                            <tr>
+                                <th scope="col">#</th>
+                                <th scope="col">Profesores</th>
+                                <th scope="col">Estado</th>
+                            </tr>
+                        </thead>
 
-                    <tbody>
-                        <tr (click)="displayTeacher(teacher)" *ngFor="let teacher of schoolsStaff.data;index as i"
-                            class="cursor-pointer" [class.table-light]="customTeacherToEvaluate?.id===teacher.id">
-                            <td><b>{{i+startIndex+1}}</b></td>
-                            <td>{{teacher.docente}}</td>
-                            <td>
-                                <ng-container *ngIf="teacher.evaluacion==1;else NoEvaluado">
-                                    <span class="badge bg-info">Evaluado</span>
-                                </ng-container>
-                            
-                            </td>
-                        </tr>
-                    </tbody>
+                        <tbody *ngIf="schoolsStaff">
+                            <tr (click)="displayTeacher(teacher)" *ngFor="let teacher of schoolsStaff.data;index as i"
+                                class="cursor-pointer" [class.table-light]="customTeacherToEvaluate?.id===teacher.id">
+                                <td><b>{{i+startIndex+1}}</b></td>
+                                <td>{{teacher.docente}}</td>
+                                <td>
+                                    <ng-container *ngIf="teacher.evaluacion==1;else NoEvaluado">
+                                        <span class="badge bg-info">Evaluado</span>
+                                    </ng-container>
+
+                                </td>
+                            </tr>
+                        </tbody>
 
 
-                </table>
+                    </table>
 
-                <div class="btn-toolbar float-end " role="toolbar" aria-label="Toolbar with button groups">
-                    <div class="btn-group" role="group" aria-label="First group">
-                        <button type="button" class="btn btn-outline-success " [class.disabled]="currentPage==0"
-                            (click)="nextPage(currentPage)"><span aria-hidden="true"
-                                class="fw-bolder ">&laquo;</span></button>
-                        <button type="button" class="btn btn-outline-success " [class.active]="currentPage==0"
-                            (click)="changeCurrentPage(0)">1</button>
-                        <button type="button" class="btn btn-outline-success " [class.active]="currentPage==1"
-                            (click)="changeCurrentPage(1)">2</button>
-                        <button type="button" class="btn btn-outline-success " [class.disabled]="currentPage==1"
-                            (click)="nextPage(currentPage)"><span aria-hidden="true"
-                                class="fw-bolder ">&raquo;</span></button>
+                    <div class="btn-toolbar float-end " role="toolbar" aria-label="Toolbar with button groups">
+                        <div class="btn-group" role="group" aria-label="First group">
+                            <button type="button" class="btn btn-outline-success " [class.disabled]="currentPage==0"
+                                (click)="nextPage(currentPage)"><span aria-hidden="true"
+                                    class="fw-bolder ">&laquo;</span></button>
+                            <button type="button" class="btn btn-outline-success " [class.active]="currentPage==0"
+                                (click)="changeCurrentPage(0)">1</button>
+                            <button type="button" class="btn btn-outline-success " [class.active]="currentPage==1"
+                                (click)="changeCurrentPage(1)">2</button>
+                            <button type="button" class="btn btn-outline-success " [class.disabled]="currentPage==1"
+                                (click)="nextPage(currentPage)"><span aria-hidden="true"
+                                    class="fw-bolder ">&raquo;</span></button>
+                        </div>
+
                     </div>
-
                 </div>
-            </div>
+            </ng-container>
+
             <div class="d-flex flex-column  justify-content-center align-items-center  border rounded p-3 h-100">
                 <ng-container *ngIf="customTeacherToEvaluate; else templateA" class="grid-display-teacher">
                     <img src="../../../assets/img/avatar.png" alt="User avatar" class="w-50  h-auto ">
                     <h5 class="text-username">{{customTeacherToEvaluate.docente}}r</h5>
-                    <a class="btn btn-dark" routerLink="/dashboard/assessment/evaluate-monitoring/{{currentDate}}/{{currentSchool}}/{{customTeacherToEvaluate.id}}/{{currentPage}}">
+                    <a class="btn btn-dark"
+                        routerLink="/dashboard/assessment/evaluate-monitoring/{{currentDate}}/{{currentSchool}}/{{customTeacherToEvaluate.id}}/{{currentPage}}">
                         <ng-container *ngIf="customTeacherToEvaluate.evaluacion==1;else textBtnEvaluar">
                             Editar
                         </ng-container>
-                        
-                    
+
+
                     </a>
                 </ng-container>
 

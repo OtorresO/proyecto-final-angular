@@ -21,16 +21,21 @@
             ],
             "tsConfig": "tsconfig.app.json",
             "assets": [
+              {
+                "glob": "_redirects",
+                "input": "src",
+                "output": "/"
+              },
               "src/favicon.ico",
               "src/assets"
             ],
             "styles": [
               "src/styles.css",
-              "./node_modules/bootswatch/dist/flatly/bootstrap.css" ,
+              "./node_modules/bootswatch/dist/flatly/bootstrap.css",
               "node_modules/ngx-toastr/toastr.css"
             ],
             "scripts": [
-              "./node_modules/jquery/dist/jquery.js",       
+              "./node_modules/jquery/dist/jquery.js",
               "./node_modules/bootstrap/dist/js/bootstrap.bundle.js"
             ]
           },
@@ -39,13 +44,13 @@
               "budgets": [
                 {
                   "type": "initial",
-                  "maximumWarning": "500kb",
+                  "maximumWarning": "600kb",
                   "maximumError": "1mb"
                 },
                 {
                   "type": "anyComponentStyle",
                   "maximumWarning": "2kb",
-                  "maximumError": "4kb"
+                  "maximumError": "12kb"
                 }
               ],
               "outputHashing": "all"
