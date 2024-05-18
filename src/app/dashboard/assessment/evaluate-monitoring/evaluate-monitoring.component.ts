@@ -98,7 +98,6 @@ export class EvaluateMonitoringComponent implements OnInit {
 
       const evaluationsStorage: Evaluation[] = this.storageService.getItem('evaluations')
       if (evaluationsStorage) {
-        console.log('pasa por aqui if')
         const indexEvaluation = evaluationsStorage.findIndex(evaluacion => this.date == evaluacion.date && this.teacher?.id == evaluacion.idTeacher && this.school?.id == evaluacion.idSchool)
         if (indexEvaluation != -1) {
           const evaluation = evaluationsStorage[indexEvaluation]
@@ -114,7 +113,6 @@ export class EvaluateMonitoringComponent implements OnInit {
               })
 
               this.factorOrganizacional = { ...factorOrganizacional, recomendacion: factor.recomendacion }
-              console.log('pasa orgnanizacional')
             }
             if (factor.idFactor == factorSocial?.idFactor) {
               this.indicadoresSocial = factor.indicadores ? factor.indicadores : factorSocial.indicadores.map(e => {
@@ -126,7 +124,6 @@ export class EvaluateMonitoringComponent implements OnInit {
                 }
               })
               this.factorSocial = { ...factorSocial, recomendacion: factor.recomendacion }
-              console.log('pasa social')
             }
             if (factor.idFactor == factorPedagogical?.idFactor) {
               this.indicadoresPedagogical = factor.indicadores ? factor.indicadores : factorPedagogical.indicadores.map(e => {
@@ -138,7 +135,6 @@ export class EvaluateMonitoringComponent implements OnInit {
                 }
               })
               this.factorPedagogical = { ...factorPedagogical, recomendacion: factor.recomendacion }
-              console.log('pasa pedagogical')
             }
             if (factor.idFactor == factorTechnological?.idFactor) {
               this.indicadoresTechnological = factor.indicadores ? factor.indicadores : factorTechnological.indicadores.map(e => {
@@ -151,13 +147,11 @@ export class EvaluateMonitoringComponent implements OnInit {
               })
 
               this.factorTechnological = { ...factorTechnological, recomendacion: factor.recomendacion }
-              console.log('pasa technological')
             }
           })
           this.evaluation = evaluation
           this.updateDataForChart()
         } else {
-          console.log('pasa por aqui else')
           this.dataFactors = [0, 0, 0, 0]
           this.indicadoresOrganizational = factorOrganizacional.indicadores.map(e => {
             return {

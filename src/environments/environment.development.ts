@@ -1,7 +1,7 @@
 export const environment = {
     production: false,
-    userCredentials:{
-        userName:'orlando',
-        password:'orlando'
+    userCredentials: {
+        userName: 'orlando',
+        password: 'orlando'
     }
 };

@@ -31,9 +31,7 @@ export class LayoutComponent {
     });
 
     this.evaluationsService.$countEvaluations.subscribe(countEvaluations=>{
-      
       this.countEvaluations = countEvaluations
-      console.log(this.countEvaluations)
     })
   }
 

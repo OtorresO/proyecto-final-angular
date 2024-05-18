@@ -78,7 +78,6 @@ export class AssessmentComponent implements OnInit {
 
   displayTeacher(teacher: Teacher) {
     this.customTeacherToEvaluate = teacher
-    console.log(this.currentDate, this.currentSchool, this.customTeacherToEvaluate)
 
   }
   onDateChange(event: any) {

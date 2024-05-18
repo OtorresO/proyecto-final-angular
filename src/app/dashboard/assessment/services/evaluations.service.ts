@@ -15,7 +15,6 @@ export class EvaluationsService {
     if (evaluations) {
       this.countEvaluations.next(evaluations.length)
     }
-    console.log(this.countEvaluations)
   }
   actualizarCountEvaluations(nuevoValor: number) {
     this.countEvaluations.next(nuevoValor);
