@@ -1,5 +1,5 @@
 import { DatePipe } from '@angular/common';
-import { Component } from '@angular/core';
+import { Component,HostListener } from '@angular/core';
 import { UserProfile } from '../models/user.model';
 import { dataUserProfile } from '../data/userProfile.data';
 import { UserProfileService } from '../services/user-profile.service';
@@ -15,12 +15,19 @@ import { UserProfileService } from '../services/user-profile.service';
 export class ProfileComponent {
   public formattedDate: string | null;
   public userProfile: UserProfile = {} as UserProfile;
-  
+  public screenWidth: number;
   constructor(private datePipe: DatePipe, private userService: UserProfileService) {
+    this.screenWidth = window.innerWidth;
     this.formattedDate = this.datePipe.transform(new Date(), 'MMM dd, yyyy');
     this.userService.userData$.subscribe(userData => {
       this.userProfile = userData;
     });
+  }
+
+  @HostListener('window:resize', ['$event'])
+  onResize(event: Event): void {
+    this.screenWidth=window.innerWidth;
+
   }
 
 }
