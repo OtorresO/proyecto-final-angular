@@ -1,11 +1,11 @@
-<div class="my-5 mx-3 flex flex-column gap-3 ">
+<div class="my-5  flex flex-column gap-3 ">
     <h4 class="fw-bold ">Evaluar</h4>
-    <div class="d-grid  p-5 gap-3  border  rounded ">
-        <div class="row">
-            <div class="col-3 ">
+    <div class="d-grid  p-2 p-sm-5 gap-3  border  rounded " >
+        <div class="row gap-3 gap-sm-0">
+            <div class="col-sm-3 col-12 ">
                 <input type="date" class="form-control" [ngModel]="currentDate" (ngModelChange)="onDateChange($event)">
             </div>
-            <div class="offset-5 col-4">
+            <div class="offset-sm-5 col-sm-4 col-12">
                 <select class="form-control" *ngIf="schools" [(ngModel)]="currentSchool"
                     (ngModelChange)="onSelectChange($event)">
                     <option class="text-truncate " [ngValue]="school.id" *ngFor="let school of schools">
@@ -20,7 +20,7 @@
 
         <div class="my-grid">
             <ng-container >
-                <div class="border rounded p-3 h-100 grid-table">
+                <div class="border rounded p-3  h-100 grid-table ">
                     <table class="table table-hover " *ngIf="!loading;else loadingTemplate">
                         <thead>
                             <tr>

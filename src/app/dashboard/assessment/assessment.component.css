@@ -1,11 +1,11 @@
 .my-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     gap: 2rem;
 }
 
 .grid-table{
-    grid-column: span 2;
+    grid-column: span 1;
 }
 
 .grid-display-teacher{
@@ -15,5 +15,19 @@
 .disabled-events{
     pointer-events: none;
     opacity: 0.7;
+}
+
+@media (min-width: 576px) {
+  .my-grid{
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .grid-table{
+    grid-column: span 2;
+  }
+
+  .grid-display-teacher{
+    grid-column: span 1;
+  }
+
 }
 
