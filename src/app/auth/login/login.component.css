@@ -22,6 +22,18 @@ form label,form div{
     height: 100vh;
     max-height: 100vh;
     background-color: #fff;
-    border-radius: 0px 60%;
 
+}
+
+form{
+  width: 75%;
+}
+
+@media (min-width: 576px) {
+  .login{
+    border-radius: 0 60%;
+  }
+  form{
+    width: 25%;
+  }
 }

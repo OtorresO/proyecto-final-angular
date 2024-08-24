@@ -1,8 +1,8 @@
 <div class="container-login">
 
-    
+
     <div class="login d-flex align-items-center  justify-content-center ">
-        <form [formGroup]="form" (submit)="login()" class="w-25">
+        <form [formGroup]="form" (submit)="login()" >
             <div class="mb-3 h3 text-center">
                 Login
             </div>
@@ -14,10 +14,10 @@
                 <label for="exampleInputPassword1" class="form-label">Password</label>
                 <input type="password" class="form-control " id="exampleInputPassword1" formControlName="password"  />
             </div>
-           
+
             <button type="submit" class="btn btn-primary float-end " [disabled]="!form.valid">Log In</button>
         </form>
 
     </div>
-    
+
 </div>
